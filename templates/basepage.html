@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block Title %}{% endblock  %}</title>
+{% block Style %}{% endblock  %}
+{% block Scripts %}{% endblock  %}
+<script src="https://kit.fontawesome.com/2b6fd63908.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="Header">
+        <ul class="PresidencyLogo">
+            <img src="{% static 'Images/Presidency_University_Kolkata_.png' %}" srcset="{% static 'Images/Presidency_University_Kolkata_.png' %} 1x, {% static 'Images/Presidency_University_Kolkata_.png' %} 2x" />
+        </ul>
+        <ul class="HeaderRoutes">
+            <li><a href="{% url 'index' %}"><h4>Home</h4></a></li>
+            <li><a><h4>About</h4></a></li>
+            <li><a><h4>Search</h4></a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'Upload'  %}"><h4>Upload</h4></a></li>
+            {% endif %}
+        </ul>
+        <ul class="HeadersLogin">
+            {% if user.is_authenticated %}
+            <li><p style="font-size:16px;">Welcome {{user.username}}</p></li>
+            <li><a href="{% url 'Logout' %}" style="font-size:16px;">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'Login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    {% block Content %}
+    {% endblock  %}
+   
+</body>
+</html>

@@ -1,0 +1,54 @@
+{% extends 'basepage.html' %}
+{% load static %}
+{% block Title %}Create Account{% endblock  %}
+{% block Style %}<link rel="stylesheet" type="text/css"  href="{% static 'css/Register.css' %}"/>{% endblock  %}
+
+{% block Content %}
+<div class="LoginContainer">
+    <div class="SignUpContainer">
+        <ul>
+            <div class="SignInButtonContainer">
+                <p>Aready Have an Account?</p>
+                <a href="{% url 'Login' %}"><button class="SihnUpButton">Sign In</button></a>
+                
+            </div>
+        </ul>
+        <hr>
+        <ul>
+            <form class="SignUpInputContainer" method="POST">
+                {% csrf_token %}
+                {% for i in Registration_Form %}
+                        <li>{{i}}</li>
+                        {% if field.help_text %}
+                            <small style="color: grey;">{{i.help_text}}</small>
+                        {% endif %}
+                        {% for error in i.errors %}
+                            <p style="color: red;">{{error}}</p>
+                        {% endfor %}
+                    {% endfor %}
+                <button type="submit" class="SubmitButton">Create Account</button>
+            </form>
+        </ul>
+    </div>
+</div>
+<div class="FooterRegister">
+    <ul>
+        <div class="PresidencyImage">
+            <img src="{% static 'Images/Presidency_University_Kolkata_.png' %}" srcset="{% static 'Images/Presidency_University_Kolkata_.png' %} 1x, {% static 'Images/Presidency_University_Kolkata_.png' %} 2x" />
+        </div>
+    </ul>
+    <ul>
+        <li><a href="">About</a><li>
+        <li><a href="">Libraries</a><li>
+        <li><a href="">Libraries</a><li>
+        <li><a href="">About Calcutta University</a><li>
+        <li><a href="">Accessibility</a><li>
+    </ul>
+    <ul>
+        <li><a href="">Press and Media</a><li>
+        <li><a href="">Term of Use</a><li>
+        <li><a href="">Privecy Policy</a><li>
+        <li><a href="">Contact</a><li>
+    </ul>
+</div>
+{% endblock %}
