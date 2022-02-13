@@ -1,0 +1,14 @@
+{% extends 'basepage.html' %}
+{% load static %}
+{% block Title %}Mail Sent{% endblock  %}
+{% block Style %}<link rel="stylesheet" type="text/css"  href="{% static 'css/Mailsent.css' %}"/>{% endblock  %}
+
+
+{% block Content %}
+<div class="MailSentContainer">
+    <div class="MailSent">
+        <p>Sucessfully Uploaded, Return to <a href="{% url 'index' %}">Home</a></p>
+    </div>
+</div>
+
+{% endblock %}

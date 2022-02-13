@@ -1,0 +1,59 @@
+{% extends 'basepage.html' %}
+{% load static %}
+{% block Title %}Login{% endblock  %}
+{% block Style %}<link rel="stylesheet" type="text/css"  href="{% static 'css/Login.css' %}"/>{% endblock  %}
+
+
+{% block Content %}
+<div class="LoginContainer">
+    <div class="LoginContainerS">
+        <ul>
+            <ul>
+                <div class="SignUpButtonContainer">
+                    <p>Dont have an Account?</p>
+                    <a href="{% url 'Register' %}"><button class="SihnUpButton">Create Account</button></a>
+                    
+                </div>
+            </ul>
+            <p>Or</p>
+            <ul>
+                <div class="SocialContainer">
+                    <li><h2>Login With Social Accounts</h2></li>
+                    <li><a href="{% url 'social:begin' 'facebook' %}" class="facebook">Facebook</a></li>
+                    <li><a href="{% url 'social:begin' 'google-oauth2' %}" class="google">Google</a></li>
+                </div>
+            </ul>
+        </ul>
+        <hr>
+        <ul>
+            <form class="LoginInputContainer" method="POST">
+                {% csrf_token %}
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="list-style:none;">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {% for field in Login %}
+                    <li>{{field}}</li>
+                {% endfor %}
+                {% for field in Login %}
+		                {% for error in field.errors %}
+			                <p style="color: red;">{{error}}</p>
+		                {% endfor %}
+	                {% endfor %}
+                    {% if login_form.non_field_errors %}
+		                <div style="color:red;">
+			                <p>{{login_form.non_field_errors}}</p>
+		                </div>
+	                {% endif %}
+                <div class="forgetpass">
+                    <a href="{% url 'RequestEditPassword' %}">Forget Password</a>
+                </div>
+                <button type="submit" class="SubmitButton">Login</button>
+            </form>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'basepage.html' %}
+{% load static %}
+{% block Title %}Home{% endblock  %}
+{% block Style %}
+<link rel="stylesheet" type="text/css"  href="{% static 'css/Landing.css' %}"/>
+{% endblock  %}
+{% block Scripts %}
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://kit.fontawesome.com/2b6fd63908.js" crossorigin="anonymous"></script>
+        <script src="{% static 'js/Landing.js' %}"></script>
+        <script
+                src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous">
+        </script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <script>
+            $( function() {
+        
+                $( "#tags" ).autocomplete({
+                source: "{% url 'Autosuggest' %}"
+                });
+            } );
+        </script>
+{% endblock  %}
+
+
+
+{% block Content %}
+        <div class="CardContainer">
+            <ul>
+                <div class="Welcome">
+                    <h1>Welcome To</h1>
+                    <div class="WelcomeBox">
+                        <h2>Presidency Univeristy</h2>
+                        <h2>Digital Archive</h2>
+                    </div>
+                </div>
+            </ul>
+            <ul>
+                <div class="CardContainerFooter">
+                    <div class="Card_Board">
+                        <div class="Heading">
+                            <h5>Editorial Board</h5>
+                        </div>
+                        <div class="ContentHeading">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </div>
+                    <div class="Card_Board">
+                        <div class="Heading">
+                            <h5>Featured Projects</h5>
+                        </div>
+                        <div class="ContentHeading">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </div>
+                    <div class="Card_Board">
+                        <div class="Heading">
+                            <h5>Categories</h5>
+                        </div>
+                        <div class="ContentHeading">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </div>
+                    <div class="Card_Board">
+                        <div class="Heading">
+                            <h5>Navigation Map</h5>
+                        </div>
+                        <div class="ContentHeading">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </div>
+                    <div class="Card_Board">
+                        <div class="Heading">
+                            <h5>History</h5>
+                        </div>
+                        <div class="ContentHeading">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+{% endblock  %}
